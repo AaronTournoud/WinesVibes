@@ -9,7 +9,7 @@ const path = require('path');
 
 
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static("Public"));
+
 
 // Configuración de la base de datos PostgreSQL
 const pool = new Pool({
