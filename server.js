@@ -1,7 +1,8 @@
 const express = require('express');
 const { Pool } = require('pg');
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
+
 const bodyParser = require('body-parser');
 const path = require('path');
 
@@ -77,5 +78,5 @@ app.get('/ranking', async (req, res) => {
 
 // Iniciar el servidor
 app.listen(port, () => {
-    console.log(`Servidor escuchando en http://localhost:${port}`);
+  console.log(`Server running on port ${port}`);
 });
