@@ -24,7 +24,7 @@ const pool = new Pool({
     }
 });
 
-app.use(express.static('Public')); // Para servir archivos estáticos como el HTML
+app.use(express.static(path.join(__dirname, 'Public')));
 
 // Ruta para la página de inicio
 app.get('/', (req, res) => {
