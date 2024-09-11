@@ -175,3 +175,43 @@ body::before {
     font-size: 1.2em;
     font-weight: bold;
 }
+.ranking-container {
+    font-family: 'Poppins', sans-serif;
+    font-style: italic;
+    font-weight: 600;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 1);
+    z-index: 1;
+    width: 50%;
+    margin: 50px;
+    border-radius: 15px;
+    justify-content: center;
+    align-items: center;
+}
+
+.ranking-container h1 {
+    font-family: 'Poppins', sans-serif;
+    font-style: italic;
+    font-weight: 900;}
+
+
+.medallero {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+.medallero img {
+    flex: 1;
+    height: 150px;
+}
+
+#medals {
+    height: 100px;
+}
+
+#tabler {
+    justify-content: center;
+    align-items: center;
+}
+ 

@@ -35,6 +35,10 @@ app.get('/vinos', (req, res) => {
     res.sendFile(path.join(__dirname, '/Public/vinos.html'));
 });
 
+app.get('/ranking', (req, res) => {
+    res.sendFile(path.join(__dirname, '/Public/ranking.html'));
+});
+
 app.get('/api/productos', async (req, res) => {
     try {
         const result = await pool.query('SELECT v.nombre as nombre, m.nombre as marca, c.calificacion as calificacion, i.imagen_url as imagen FROM vinos v join marca m on v.idmarca=m.id join calificacion c on v.id=c.idvino left join imagen i on i.id=v.id'); // Cambia el nombre de la tabla según tu estructura
@@ -44,6 +48,18 @@ app.get('/api/productos', async (req, res) => {
         res.status(500).send('Error en el servidor');
     }
 });
+
+app.get('/api/ranking', async (req, res) => {
+    try {
+        const result = await pool.query('SELECT v.nombre as nombre, m.nombre as marca, c.calificacion as calificacion, i.imagen_url as imagen FROM vinos v join marca m on v.idmarca=m.id join calificacion c on v.id=c.idvino left join imagen i on i.id=v.id order by calificacion desc'); // Cambia el nombre de la tabla según tu estructura
+        res.json(result.rows);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error en el servidor');
+    }
+});
+
+
 
 // Otras rutas (Bodegas, Uvas, Ranking)
 app.get('/bodegas', async (req, res) => {
@@ -66,15 +82,6 @@ app.get('/uvas', async (req, res) => {
     }
 });
 
-app.get('/ranking', async (req, res) => {
-    try {
-        const result = await pool.query('SELECT * FROM calificacion');
-        res.json(result.rows);
-    } catch (err) {
-        console.error(err);
-        res.status(500).send('Error en la base de datos');
-    }
-});
 
 // Iniciar el servidor
 app.listen(port, () => {
