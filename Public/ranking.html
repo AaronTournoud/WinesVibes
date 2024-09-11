@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ranking de Vinos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="ranking-container">
+        <h1>Ranking de Vinos</h1>
+
+        <!-- Medallero para los 3 primeros -->
+        <div class="medal-rank">
+            <div class="medal gold">
+                <span class="position">1</span>
+                <img src="url_vino_1" alt="Vino 1" class="wine-image">
+                <h2>Nombre del Vino 1</h2>
+                <p>Calificaci�n: 9.8</p>
+            </div>
+            <div class="medal silver">
+                <span class="position">2</span>
+                <img src="url_vino_2" alt="Vino 2" class="wine-image">
+                <h2>Nombre del Vino 2</h2>
+                <p>Calificaci�n: 9.6</p>
+            </div>
+            <div class="medal bronze">
+                <span class="position">3</span>
+                <img src="url_vino_3" alt="Vino 3" class="wine-image">
+                <h2>Nombre del Vino 3</h2>
+                <p>Calificaci�n: 9.4</p>
+            </div>
+        </div>
+
+        <!-- Tabla para el resto de los vinos -->
+        <table class="wine-table">
+            <thead>
+                <tr>
+                    <th>Posici�n</th>
+                    <th>Vino</th>
+                    <th>Calificaci�n</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Aqu� ir�n los vinos del 4 en adelante -->
+                <tr>
+                    <td>4</td>
+                    <td>Nombre del Vino 4</td>
+                    <td>9.3</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Nombre del Vino 5</td>
+                    <td>9.1</td>
+                </tr>
+                <!-- Contin�a con m�s vinos seg�n la base de datos -->
+            </tbody>
+        </table>
+    </div>
+</body>
+<script>
+    async function fetchProductos() {
+        try {
+            const response = await fetch('/api/productos');
+            const productos = await response.json();
+            const ranking = document.getElementById('ranking');
+</script>
+</html>
