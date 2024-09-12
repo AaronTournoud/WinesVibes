@@ -1,25 +1,19 @@
 html,
 body {
-    display: flex;
-
-    justify-content: center; /* Centra horizontalmente */
-    align-items: center;     /* Centra verticalmente */
-    height: 100vh;           /* 100% de la altura del viewport */
-    width: 100%;
-    padding: 0;
-}
-body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center;     /* Centra verticalmente */
+    height: 100vh;           /* 100% de la altura del viewport */
+    width: 100%;
     background-image: url(https://images.pexels.com/photos/442116/pexels-photo-442116.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
     background-size: cover;
     background-color: rgba(0, 0, 0, .6);
+    position: relative; /* Asegura que el pseudo-elemento se posicione respecto al body */
 }
+
 body::before {
     content: "";
     position: absolute;
@@ -28,7 +22,7 @@ body::before {
     width: 100%;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.6); /* Ajusta la opacidad según lo necesites */
-    z-index: 1;
+    z-index: 0; /* Asegúrate de que esté detrás del contenido */
 }
 .swiper {
     width: 100%;
@@ -176,35 +170,56 @@ body::before {
     font-weight: bold;
 }
 .ranking-container {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     font-family: 'Poppins', sans-serif;
     font-style: italic;
     font-weight: 600;
     text-align: center;
     background-color: rgba(255, 255, 255, 1);
     z-index: 1;
-    width: 50%;
-    margin: 50px;
+    height: 100vh;
+    width: 80%;
+    margin: 100px auto; 
     border-radius: 15px;
-    justify-content: center;
-    align-items: center;
+    padding: 20px; /* Añadido padding para asegurar espacio interno */
 }
 
 .ranking-container h1 {
+    height: max-content;
     font-family: 'Poppins', sans-serif;
     font-style: italic;
-    font-weight: 900;}
+    font-weight: 900;
+}
 
+.ranking-container div {
+    margin: 20px;
+}
 
+/* Ajustes para el medallero */
 .medallero {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
+    margin-top: 200px;
+    display: flex; /* Usar block para alinear verticalmente */
 }
+
+.medallero .medal {
+    margin: 20px auto; /* Añadir espacio entre medallas y centrar */
+    width: 200px; /* Ancho fijo para las medallas */
+    text-align: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 .medallero img {
-    flex: 1;
-    height: 150px;
+    width: 100px; /* Ancho fijo para las imágenes */
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 10px;
 }
+
+
 
 #medals {
     height: 100px;

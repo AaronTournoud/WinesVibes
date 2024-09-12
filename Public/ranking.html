@@ -15,9 +15,22 @@
 
         
         <div class="medal-rank" id="medal-rank"></div>
+        <div class="ranking-datos" id="ranking-datos">
+            <table class="wine-table">
+                <thead>
+                    <tr>
+                        <th>Posici�n</th>
+                        <th>Vino</th>
+                        <th>Calificaci�n</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <div class="datos" id="datos">
+                </tbody>
+        </div>
     </div>
     <br></br>
-        <div class="tabler" id="tabler">
+       
         
 
 <script>
@@ -73,20 +86,21 @@
                     `;
                     medalRank.appendChild(medallero);
 
-                    const tabler= document.getElementById('tabler');
-                    const tabla= document.createElement('div');
-                    tabla.classList.add('tabla');
-                    tabla.innerHTML = `
-                    <table class="wine-table">
-                        <thead>
-                            <tr>
-                                <th>Posici�n</th>
-                                <th>Vino</th>
-                                <th>Calificaci�n</th>
-                            </tr>
-                        </thead>
-                    `
-                    tabler.appendChild(tabla);
+                  
+                    const tablaVinos = document.querySelector('.wine-table tbody');
+
+                            vino.forEach((vino, index) => {
+                            if (index >= 3) {
+                                const fila = `
+                                <tr>
+                                    <td>${index}</td>
+                                    <td>${vino.nombre}</td>
+                                    <td>${vino.calificacion}</td>
+                                </tr>
+                                `;
+                                tablaVinos.innerHTML += fila;
+                            }
+});
             } catch (error) {
                 console.error('Error al obtener los productos:', error);
             }
