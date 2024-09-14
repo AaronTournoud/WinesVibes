@@ -38,6 +38,9 @@ app.get('/vinos', (req, res) => {
 app.get('/ranking', (req, res) => {
     res.sendFile(path.join(__dirname, '/Public/ranking.html'));
 });
+app.get('/bodegas', (req, res) => {
+    res.sendFile(path.join(__dirname, '/Public/bodegas.html'));
+});
 
 app.get('/api/productos', async (req, res) => {
     try {
@@ -62,15 +65,7 @@ app.get('/api/ranking', async (req, res) => {
 
 
 // Otras rutas (Bodegas, Uvas, Ranking)
-app.get('/bodegas', async (req, res) => {
-    try {
-        const result = await pool.query('SELECT * FROM marca');
-        res.json(result.rows);
-    } catch (err) {
-        console.error(err);
-        res.status(500).send('Error en la base de datos');
-    }
-});
+
 
 app.get('/uvas', async (req, res) => {
     try {

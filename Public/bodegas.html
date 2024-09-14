@@ -1,11 +1,80 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Vinoteca</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+        />
+    <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-    
+    <div class="swiper mySwiper">
+        <div class="swiper-wrapper" id="swiper-wrapper">
+            <!-- Aquí se agregarán dinámicamente los productos -->
+        </div>
+
+        <!-- Añadir controles de navegación -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+
+       
+
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+    async function fetchProductos() {
+        try {
+            const response = await fetch('/api/productos');
+            const productos = await response.json();
+            const swiperWrapper = document.getElementById('swiper-wrapper');
+
+            // Generar las diapositivas dinámicamente
+            productos.forEach(producto => {
+                const slide = document.createElement('div');
+                slide.classList.add('swiper-slide');
+                
+                slide.innerHTML = `
+                    <div>
+                        <h3>${producto.marca}</h3>
+                    </div>
+                    <img src="${producto.imagen}">
+                `;
+                swiperWrapper.appendChild(slide);
+            });
+
+
+    var swiper = new Swiper (".mySwiper", {
+        effect: "coverflow",
+        
+        centeredSlides: true,
+        slidesPerView: "auto",
+        loop: true,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,},
+        coverflowEffect: {
+            depth:500,
+            modifer:1,
+            slidesShadows: true,
+            rotate:0,
+            stretch:0
+        }   
+        
+        ,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
+} catch (error) {
+            console.error('Error al obtener los productos:', error);
+        }
+    }
+    document.addEventListener('DOMContentLoaded', fetchProductos);
+</script>
 </body>
 </html>
