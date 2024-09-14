@@ -6,11 +6,11 @@ body {
     display: flex;
     justify-content: center; /* Centra horizontalmente */
     align-items: center;     /* Centra verticalmente */
-    height: 100vh;           /* 100% de la altura del viewport */
+    height: 100%;           /* 100% de la altura del viewport */
     width: 100%;
     background-image: url(https://images.pexels.com/photos/442116/pexels-photo-442116.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
     background-size: cover;
-    background-color: rgba(0, 0, 0, .6);
+    background-color: rgba(0, 0, 0, .8);
     position: relative; /* Asegura que el pseudo-elemento se posicione respecto al body */
 }
 
@@ -20,8 +20,8 @@ body::before {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.6); /* Ajusta la opacidad según lo necesites */
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Ajusta la opacidad según lo necesites */
     z-index: 0; /* Asegúrate de que esté detrás del contenido */
 }
 .swiper {
@@ -113,7 +113,7 @@ body::before {
 
 .star {
     font-size: 1.5rem;
-    color: gold;
+    color: rgb(60, 0, 134);
 }
 
 .empty-star {
@@ -170,6 +170,9 @@ body::before {
     font-weight: bold;
 }
 .ranking-container {
+   display: block;
+   justify-content: center;
+   align-items: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     font-family: 'Poppins', sans-serif;
     font-style: italic;
@@ -177,9 +180,9 @@ body::before {
     text-align: center;
     background-color: rgba(255, 255, 255, 1);
     z-index: 1;
-    height: 100vh;
+    height: auto;
     width: 80%;
-    margin: 100px auto; 
+    margin-top: 150%; 
     border-radius: 15px;
     padding: 20px; /* Añadido padding para asegurar espacio interno */
 }
@@ -191,13 +194,10 @@ body::before {
     font-weight: 900;
 }
 
-.ranking-container div {
-    margin: 20px;
-}
 
 /* Ajustes para el medallero */
 .medallero {
-    margin-top: 200px;
+    margin-top: auto;
     display: flex; /* Usar block para alinear verticalmente */
 }
 
@@ -205,18 +205,16 @@ body::before {
     margin: 20px auto; /* Añadir espacio entre medallas y centrar */
     width: 200px; /* Ancho fijo para las medallas */
     text-align: center;
-    background-color: #fff;
+    background-color: #ffffff;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
 .medallero img {
     width: 100px; /* Ancho fijo para las imágenes */
-    height: 100px;
+    height: 200px;
     object-fit: cover;
-    border-radius: 50%;
-    margin-bottom: 10px;
 }
 
 
@@ -225,8 +223,16 @@ body::before {
     height: 100px;
 }
 
-#tabler {
+
+
+.ranking-datos {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+    width: 0 auto;
+    display: flex;
     justify-content: center;
-    align-items: center;
+    border-radius: 10%;
 }
- 
+
+.wine-table th, .wine-table td {
+    padding: 10px;
+}
